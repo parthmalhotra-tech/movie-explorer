@@ -6,3 +6,59 @@
   <title>Movie Explorer </title>
   <link rel="stylesheet" href="/static/css/movie_details.css" />
 </head>
+<header class="navbar">
+    <div class="navbar_inner">
+      <a href="/" class="logo"> 
+        <span class="logo_icon">🎬</span>
+        <span class="logo_text">Movie<span class="logo_accent">Explorer</span></span>
+      </a>
+      <nav class="nav-links">
+         <a href="#" class="nav-links_item is-active">Home</a>
+        <a href="/#trending" class="nav-links_item">Movies</a>
+        <a href="#" class="nav-links_item">Watchlist</a>
+        <a href="#" class="nav-links_item">Profile</a>
+      </nav>
+    </div>
+  </header>
+ <main>
+    <section class="hero">
+     <a href="/" class="back-btn">
+    <svg xmlns="http://www.w3.org/2000/svg"
+         width="30"
+         height="22"
+         viewBox="0 0 24 24"
+         fill="none"
+         stroke="currentColor"
+         stroke-width="2"
+         stroke-linecap="round"
+         stroke-linejoin="round">
+      <path d="M23 12H5"></path>
+      <path d="M12 19l-7-7 7-7"></path>
+    </svg>
+    Back To Home
+</a>  
+      
+      <div class="hero_text">
+        <P class="hero_text title">{{movie_title}}</P>
+        </div>
+        <section class=movie_details>
+        <div class="movie_poster"><img src="{{ movie_poster }}" alt="{{ movie_title }}"></div>
+        <div class="movie_details_text">
+         <p><strong>⭐ IMDb:</strong> {{ movie_imdb_rating }}</p>
+        <p><strong>📅 Year:</strong> {{ movie_year }}</p>
+        <p><strong>🎭 Genre:</strong> {{ genre }}</p>
+        <p><strong>⏱ Runtime:</strong> {{ runtime }}</p>
+        <p><strong>🎬 Director:</strong> {{ director }}</p>
+        <p><strong>👥 Actors:</strong> {{ actors }}</p>
+        <p><strong>🌍 Country:</strong> {{ country }}</p>
+        <p><strong>🗣 Language:</strong> {{ language }}</p>
+        </div>
+        
+          </section>
+        <div class="overview">
+        <h2>Overview</h2>
+        <p>{{ plot }}</p>
+        </div>
+        
+  </section>
+ </main>

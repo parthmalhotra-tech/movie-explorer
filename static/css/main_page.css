@@ -329,14 +329,12 @@ a {
   margin-top: 4px;
 }
 
-/* ---------- 6. GENERIC SECTION LAYOUT ---------- */
 .section {
   padding: 90px 32px;
   max-width: var(--max-width);
   margin: 0 auto;
 }
 
-/* Alternating background band for visual rhythm */
 .section--alt {
   max-width: 100%;
   background: var(--bg-secondary);

@@ -1,4 +1,5 @@
 import uvicorn
+import requests
 from fastapi import FastAPI,Request
 from fastapi.staticfiles import StaticFiles
 from  fastapi.templating import Jinja2Templates 
@@ -10,7 +11,23 @@ def start(req:Request):
      return templates.TemplateResponse(name="main_page.html",request=req,)
 @app.get("/movie/{movie_id}")
 def movie_details(req:Request,movie_id :str):
-     return templates.TemplateResponse(name="movie_details.html",request=req,)
+    url = f"https://www.omdbapi.com/?apikey=904d2141&t={movie_id}"
+    response = requests.get(url)
+    movie = response.json()
+    return templates.TemplateResponse("movie_details.html",
+                                      {"request":req,
+                                       "movie_id":movie_id,
+                                       "movie_title":movie["Title"],
+                                       "movie_poster":movie["Poster"],
+                                       "movie_imdb_rating":movie["imdbRating"],
+                                       "movie_year":movie["Year"],
+                                       "genre":movie["Genre"],
+                                       "runtime":movie["Runtime"],
+                                       "director":movie["Director"],
+                                       "actors":movie["Actors"],
+                                       "country":movie["Country"],
+                                       "language":movie["Language"],
+                                       "plot":movie["Plot"]})
 @app.get("/login")
 def login(req:Request):
      return templates.TemplateResponse(name="login.html",request=req,)
