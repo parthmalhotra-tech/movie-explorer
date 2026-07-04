@@ -8,7 +8,31 @@ templates=Jinja2Templates(directory="templates")
 app.mount("/static",StaticFiles(directory="static"),name="static")
 @app.get("/")
 def start(req:Request):
-     return templates.TemplateResponse(name="main_page.html",request=req,)
+    movies = [
+    "Sultan",
+    "3 Idiots",
+    "Dangal",
+    "PK",
+    "Shershaah",
+    "Bajrangi Bhaijaan",
+    "War",
+    "Pathaan",
+    "Jawan",
+    "Animal",
+    "Drishyam",
+    "Bhool Bhulaiyaa",
+    "Chhichhore",
+    "Kabir Singh",
+    "Zindagi Na Milegi Dobara"]
+    movie_list = []
+    for title in movies:
+           response = requests.get(f"http://www.omdbapi.com/?apikey=904d2141&t={title}")
+           movie_list.append(response.json())
+    print(movie_list)
+    return templates.TemplateResponse("main_page.html", {
+        "request": req,
+        "movie": movie_list
+    })
 @app.get("/movie/{movie_id}")
 def movie_details(req:Request,movie_id :str):
     url = f"https://www.omdbapi.com/?apikey=904d2141&t={movie_id}"

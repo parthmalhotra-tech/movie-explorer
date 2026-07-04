@@ -56,163 +56,27 @@
         <a href="#trending" class="btn btn--outline hero__cta">Explore Movies</a>
       </div>
     </section>
+    <section class="movie_poster_details">
+{% for movie in movie %}
+    <article class="movie-card">
 
-    <section class="section" id="trending">
-      <div class="section__header">
-        <h2 class="section__title">Trending Now</h2>
-        <p class="section__subtitle">The most-watched titles this week</p>
-      </div>
+    <div class="movie-card__poster">
+        <img src="{{ movie.Poster }}" alt="{{ movie.Title }}">
+        <span class="movie-card__badge">★ {{ movie.imdbRating }}</span>
+    </div>
 
-      <div class="movie-grid">
-        <article class="movie-card">
-          <div class="movie-card__poster movie-card__poster--1">
-            <span class="movie-card__badge">★ 8.4</span>
-          </div>
-         <a href="/movie/Sultan"><div class="movie-card__info">
-            <h3 class="movie-card__title">SULTAN</h3>
-            <p class="movie-card__meta">2024 &bull; Sci-Fi</p>
-          </div>
-          </a> 
-        </article>
-        <article class="movie-card">
-          <div class="movie-card__poster movie-card__poster--2">
-            <span class="movie-card__badge">★ 7.9</span>
-          </div>
-         <a href="/movie/Sultan"><div class="movie-card__info">
-            <h3 class="movie-card__title">SULTAN</h3>
-            <p class="movie-card__meta">2024 &bull; Sci-Fi</p>
-          </div>
-          </a> 
-        </article>
+    <a href="/movie/{{ movie.Title }}">
+        <div class="movie-card__info">
+            <h3 class="movie-card__title">{{ movie.Title }}</h3>
+            <p class="movie-card__meta">
+                {{ movie.Year }} &bull; {{ movie.Genre }}
+            </p>
+        </div>
+    </a>
 
-        <article class="movie-card">
-          <div class="movie-card__poster movie-card__poster--3">
-            <span class="movie-card__badge">★ 9.1</span>
-          </div>
-         <a href="/movie/Sultan"><div class="movie-card__info">
-            <h3 class="movie-card__title">SULTAN</h3>
-            <p class="movie-card__meta">2024 &bull; Sci-Fi</p>
-          </div>
-          </a> 
-        </article>
-        <article class="movie-card">
-          <div class="movie-card__poster movie-card__poster--4">
-            <span class="movie-card__badge">★ 6.8</span>
-          </div>
-          <a href="/movie/Sultan"><div class="movie-card__info">
-            <h3 class="movie-card__title">SULTAN</h3>
-            <p class="movie-card__meta">2024 &bull; Sci-Fi</p>
-          </div>
-          </a> 
-        </article>
-
-
-        <article class="movie-card">
-          <div class="movie-card__poster movie-card__poster--5">
-            <span class="movie-card__badge">★ 8.0</span>
-          </div>
-          <a href="/movie/Sultan"><div class="movie-card__info">
-            <h3 class="movie-card__title">SULTAN</h3>
-            <p class="movie-card__meta">2024 &bull; Sci-Fi</p>
-          </div>
-          </a> 
-        </article>
-
-        <article class="movie-card">
-          <div class="movie-card__poster movie-card__poster--6">
-            <span class="movie-card__badge">★ 7.3</span>
-          </div>
-          <a href="/movie/Sultan"><div class="movie-card__info">
-            <h3 class="movie-card__title">SULTAN</h3>
-            <p class="movie-card__meta">2024 &bull; Sci-Fi</p>
-          </div>
-          </a> 
-        </article>
-        <article class="movie-card">
-          <div class="movie-card__poster movie-card__poster--7">
-            <span class="movie-card__badge">★ 8.7</span>
-          </div>
-          <a href="/movie/Sultan"><div class="movie-card__info">
-            <h3 class="movie-card__title">SULTAN</h3>
-            <p class="movie-card__meta">2024 &bull; Sci-Fi</p>
-          </div>
-          </a> 
-        </article>
-
-
-        <article class="movie-card">
-          <div class="movie-card__poster movie-card__poster--8">
-            <span class="movie-card__badge">★ 7.5</span>
-          </div>
-          <a href="/movie/Sultan"><div class="movie-card__info">
-            <h3 class="movie-card__title">SULTAN</h3>
-            <p class="movie-card__meta">2024 &bull; Sci-Fi</p>
-          </div>
-          </a> 
-        </article>
-        <article class="movie-card">
-          <div class="movie-card__poster movie-card__poster--8">
-            <span class="movie-card__badge">★ 7.5</span>
-          </div>
-          <a href="/movie/Sultan"><div class="movie-card__info">
-            <h3 class="movie-card__title">SULTAN</h3>
-            <p class="movie-card__meta">2024 &bull; Sci-Fi</p>
-          </div>
-          </a> 
-        </article>
-         <article class="movie-card">
-          <div class="movie-card__poster movie-card__poster--8">
-            <span class="movie-card__badge">★ 7.5</span>
-          </div>
-          <a href="/movie/Sultan"><div class="movie-card__info">
-            <h3 class="movie-card__title">SULTAN</h3>
-            <p class="movie-card__meta">2024 &bull; Sci-Fi</p>
-          </div>
-          </a> 
-        </article>
-        <article class="movie-card">
-          <div class="movie-card__poster movie-card__poster--8">
-            <span class="movie-card__badge">★ 7.5</span>
-          </div>
-          <a href="/movie/Sultan"><div class="movie-card__info">
-            <h3 class="movie-card__title">SULTAN</h3>
-            <p class="movie-card__meta">2024 &bull; Sci-Fi</p>
-          </div>
-          </a> 
-        </article>
-        <article class="movie-card">
-          <div class="movie-card__poster movie-card__poster--8">
-            <span class="movie-card__badge">★ 7.5</span>
-          </div>
-          <a href="/movie/Sultan"><div class="movie-card__info">
-            <h3 class="movie-card__title">SULTAN</h3>
-            <p class="movie-card__meta">2024 &bull; Sci-Fi</p>
-          </div>
-          </a> 
-        </article>
-         <article class="movie-card">
-          <div class="movie-card__poster movie-card__poster--8">
-            <span class="movie-card__badge">★ 7.5</span>
-          </div>
-          <a href="/movie/Sultan"><div class="movie-card__info">
-            <h3 class="movie-card__title">SULTAN</h3>
-            <p class="movie-card__meta">2024 &bull; Sci-Fi</p>
-          </div>
-          </a> 
-        </article>
-        <article class="movie-card">
-          <div class="movie-card__poster movie-card__poster--8">
-            <span class="movie-card__badge">★ 7.5</span>
-          </div>
-          <a href="/movie/Sultan"><div class="movie-card__info">
-            <h3 class="movie-card__title">SULTAN</h3>
-            <p class="movie-card__meta">2024 &bull; Sci-Fi</p>
-          </div>
-          </a> 
-        </article>
-
-      </div>
-    </section>
+</article>
+{% endfor %}
+</section>
 
     <section class="section section--alt">
       <div class="section__header">

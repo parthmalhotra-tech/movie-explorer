@@ -388,36 +388,25 @@ a {
 }
 
 /* Poster placeholder: distinct gradient per card stands in for a real image */
-.movie-card__poster {
-  position: relative;
-  aspect-ratio: 2 / 3;
-  width: 100%;
-  display: flex;
-  align-items: flex-start;
-  justify-content: flex-end;
-  padding: 12px;
-  /* subtle sprocket-hole strip along the top, echoing a film reel */
-  background-image:
-    repeating-linear-gradient(90deg, rgba(0,0,0,0.35) 0 6px, transparent 6px 22px),
-    linear-gradient(160deg, var(--poster-a, #3a1c71), var(--poster-b, #d76d77));
-  background-size: 100% 10px, 100% 100%;
-  background-repeat: no-repeat;
-  background-position: top left, center;
+
+.movie-card__poster{
+    position: relative;
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+    border-radius: 18px 18px 0 0;
+}
+.movie_poster_details{
+  display:grid;
+  grid-template-columns: repeat(4,1fr);
+  gap:25px;
+  margin-top:40px;
 }
 
-.movie-card__poster--1 { --poster-a: #1f1147; --poster-b: #5b2a86; }
-.movie-card__poster--2 { --poster-a: #4a1035; --poster-b: #b23a5e; }
-.movie-card__poster--3 { --poster-a: #0f2f3d; --poster-b: #2e7d8c; }
-.movie-card__poster--4 { --poster-a: #2a0e0e; --poster-b: #7a1f1f; }
-.movie-card__poster--5 { --poster-a: #3a2e08; --poster-b: #a8862f; }
-.movie-card__poster--6 { --poster-a: #12321f; --poster-b: #2f7d52; }
-.movie-card__poster--7 { --poster-a: #241a3d; --poster-b: #5e3b8c; }
-.movie-card__poster--8 { --poster-a: #3d1a2e; --poster-b: #8c3b6b; }
-
-/* IMDb-style gold rating badge */
 .movie-card__badge {
   background: var(--accent-gold);
   color: #0a0a0f;
+
   font-size: 0.78rem;
   font-weight: 700;
   padding: 4px 9px;
