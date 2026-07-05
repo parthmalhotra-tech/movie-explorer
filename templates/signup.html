@@ -28,17 +28,17 @@
         <br>
         <P class="hero_text subtitle">Join The World Of Movies</P>
         </div>
-      <form class="signup">
-        <div class="input"><label for="name" class="labels">NAME  </label>
-          <input type="text" placeholder="Enter your name please" class="signup_input" /></div>
-          <div class="input"><label for="email" class="labels">EMAIL </label>
-          <input type="text" placeholder="Enter your email please" class="signup_input " /></div>
-          <div class="input"><label for="username" class="labels">USERNAME </label>
-          <input type="text" placeholder="Choose your username please" class="signup_input" /></div>
-          <div class="input"><label for="password" class="labels">PASSWORD </label>
-          <input type="text" placeholder="Enter your password please" class="signup_input " /></div>
-          <div class="input"><label for="confirm_password" class="labels">CONFIRM PASSWORD </label>
-          <input type="text" placeholder="Confirm your password please" class="signup_input " /></div>
+      <form class="signup" action="/signup" method="post">
+        <div class="input"><label for="name" class="labels">Name </label>
+          <input type="text" name="name" placeholder="Enter your name please" class="signup_input" /></div>
+          <div class="input"><label for="email" class="labels">Email </label>
+          <input type="text" name="email" placeholder="Enter your email please" class="signup_input " /></div>
+          <div class="input"><label for="username" class="labels">username</label>
+          <input type="text" name="username" placeholder="Choose your username please" class="signup_input" /></div>
+          <div class="input"><label for="password" class="labels">Password </label>
+          <input type="text"  name="password" placeholder="Enter your password please" class="signup_input " /></div>
+          <div class="input"><label for="confirm_password" class="labels">Confirm Password </label>
+          <input type="text" name="confirm_password" placeholder="Confirm your password please" class="signup_input " /></div>
           
           <button type="submit" class="btn btn--primary">Sign up</button>
 

@@ -1,12 +1,20 @@
-import uvicorn
-import requests
-from fastapi import FastAPI,Request
+import uvicorn,requests
+from models import User,Watchlist
+from database import Base,engine,sessionlocal
+from crud import create
+from fastapi import FastAPI,Request,Form
 from fastapi.staticfiles import StaticFiles
 from  fastapi.templating import Jinja2Templates 
 from fastapi.responses import RedirectResponse
+
 app=FastAPI()
+
 templates=Jinja2Templates(directory="templates")
+
 app.mount("/static",StaticFiles(directory="static"),name="static")
+
+Base.metadata.create_all(bind=engine)
+
 @app.get("/")
 def start(req:Request):
     movies = [
@@ -33,9 +41,11 @@ def start(req:Request):
         "request": req,
         "movie": movie_list
     })
+
 @app.get("/search")
 def search(req:Request,movie_id:str):
      return RedirectResponse(url=f"/movie/{movie_id}")
+
 @app.get("/movie/{movie_id}")
 def movie_details(req:Request,movie_id :str):
     movie_id.capitalize()
@@ -60,14 +70,31 @@ def movie_details(req:Request,movie_id :str):
                                        "country":movie["Country"],
                                        "language":movie["Language"],
                                        "plot":movie["Plot"]})
+
 @app.get("/login")
 def login(req:Request):
      return templates.TemplateResponse(name="login.html",request=req,)
+@app.post("/login")
+def login_info(req:Request,email : str = Form(...),password : str = Form(...)):
+     return RedirectResponse(url="http://127.0.0.1:8000/",status_code=303)
+
 @app.get("/signup")
 def signup(req:Request):
-     return templates.TemplateResponse(name="signup.html",request=req,)
+     return templates.TemplateResponse(name="signup.html",request=req)
+@app.post("/signup")
+def signup_info(req:Request,
+                email : str = Form(...),
+                password : str = Form(...),
+                confirm_password : str = Form(...),
+                username : str = Form(...)):
+     db=sessionlocal()
+     signup_details={"username":username,"email":email,"password":password}
+     create(db,User,signup_details)
+     return RedirectResponse(url="http://127.0.0.1:8000/",status_code=303)
+
 @app.get("/profile")
 def profile(req:Request):
      return templates.TemplateResponse(name="profile.html",request=req,)
+
 if __name__=="__main__":
      uvicorn.run("app:app",host="127.0.0.1",port=8000,reload=True)
