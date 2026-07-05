@@ -38,6 +38,7 @@ def search(req:Request,movie_id:str):
      return RedirectResponse(url=f"/movie/{movie_id}")
 @app.get("/movie/{movie_id}")
 def movie_details(req:Request,movie_id :str):
+    movie_id.capitalize()
     url = f"https://www.omdbapi.com/?apikey=904d2141&t={movie_id}"
     response = requests.get(url)
     movie = response.json()
