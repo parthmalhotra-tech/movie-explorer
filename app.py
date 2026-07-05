@@ -3,6 +3,7 @@ import requests
 from fastapi import FastAPI,Request
 from fastapi.staticfiles import StaticFiles
 from  fastapi.templating import Jinja2Templates 
+from fastapi.responses import RedirectResponse
 app=FastAPI()
 templates=Jinja2Templates(directory="templates")
 app.mount("/static",StaticFiles(directory="static"),name="static")
@@ -28,16 +29,22 @@ def start(req:Request):
     for title in movies:
            response = requests.get(f"http://www.omdbapi.com/?apikey=904d2141&t={title}")
            movie_list.append(response.json())
-    print(movie_list)
     return templates.TemplateResponse("main_page.html", {
         "request": req,
         "movie": movie_list
     })
+@app.get("/search")
+def search(req:Request,movie_id:str):
+     return RedirectResponse(url=f"/movie/{movie_id}")
 @app.get("/movie/{movie_id}")
 def movie_details(req:Request,movie_id :str):
     url = f"https://www.omdbapi.com/?apikey=904d2141&t={movie_id}"
     response = requests.get(url)
     movie = response.json()
+    if movie["Response"]=="False":
+         return templates.TemplateResponse("movie_not_found.html",
+                                           {"request":req,
+                                           "movie_id":movie_id})
     return templates.TemplateResponse("movie_details.html",
                                       {"request":req,
                                        "movie_id":movie_id,

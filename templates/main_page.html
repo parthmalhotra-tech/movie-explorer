@@ -44,12 +44,12 @@
         <p class="hero__subtitle">
           Search thousands of movies, explore ratings, cast, trailers and build your personal watchlist.
         </p>
-        <form class="search-bar" role="search">
+        <form action="/search" method="get" class="search-bar" role="search">
           <svg class="search-bar__icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
             <circle cx="11" cy="11" r="7"></circle>
             <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
           </svg>
-          <input type="text" placeholder="Search for a movie, actor, or genre..." class="search-bar__input" />
+          <input type="text" name="movie_id" placeholder="Search for a movie, actor, or genre..." class="search-bar__input" />
           <button type="submit" class="btn btn--primary search-bar__btn">Search</button>
         </form>
 
