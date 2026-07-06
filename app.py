@@ -15,6 +15,8 @@ app.mount("/static",StaticFiles(directory="static"),name="static")
 
 Base.metadata.create_all(bind=engine)
 
+db=sessionlocal()
+
 @app.get("/")
 def start(req:Request):
     movies = [
@@ -76,6 +78,19 @@ def login(req:Request):
      return templates.TemplateResponse(name="login.html",request=req,)
 @app.post("/login")
 def login_info(req:Request,email : str = Form(...),password : str = Form(...)):
+     user=db.query(User).filter(User.email== email).first()
+     if user is None:
+          return templates.TemplateResponse("login.html",
+                                                 {"request":req,
+                                                  "error1":"email doesn't exist"})
+     else:
+          if password==user.password:
+               return {"got in"}
+          else:
+               return templates.TemplateResponse("login.html",
+                                                 {"request":req,
+                                                  "error":"wrong password"})
+     
      return RedirectResponse(url="http://127.0.0.1:8000/",status_code=303)
 
 @app.get("/signup")
@@ -87,7 +102,7 @@ def signup_info(req:Request,
                 password : str = Form(...),
                 confirm_password : str = Form(...),
                 username : str = Form(...)):
-     db=sessionlocal()
+     
      signup_details={"username":username,"email":email,"password":password}
      create(db,User,signup_details)
      return RedirectResponse(url="http://127.0.0.1:8000/",status_code=303)
