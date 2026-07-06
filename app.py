@@ -97,7 +97,7 @@ def login_info(req:Request,email : str = Form(...),password : str = Form(...)):
           if password==user.password:
                req.session["user_id"]=user.id
                req.session["username"]=user.username
-               return RedirectResponse(url="http://127.0.0.1:8000/",status_code=303)
+               return RedirectResponse(url="/",status_code=303)
           else:
                return templates.TemplateResponse("login.html",
                                                  {"request":req,
@@ -114,7 +114,7 @@ def signup_info(req:Request,
      
      signup_details={"username":username,"email":email,"password":password}
      create(db,User,signup_details)
-     return RedirectResponse(url="http://127.0.0.1:8000/",status_code=303)
+     return RedirectResponse(url="/",status_code=303)
 
 @app.get("/profile")
 def profile(req:Request):
