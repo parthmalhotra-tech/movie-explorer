@@ -6,6 +6,7 @@ from fastapi import FastAPI,Request,Form
 from fastapi.staticfiles import StaticFiles
 from  fastapi.templating import Jinja2Templates 
 from fastapi.responses import RedirectResponse
+from starlette.middleware.sessions import SessionMiddleware
 
 app=FastAPI()
 
@@ -17,8 +18,15 @@ Base.metadata.create_all(bind=engine)
 
 db=sessionlocal()
 
+app.add_middleware(SessionMiddleware,secret_key="this is my key for movie_explorer")
+
 @app.get("/")
 def start(req:Request):
+    user_id=req.session.get("user_id")
+    username=req.session.get("username")
+    logged_in=False
+    if user_id:
+         logged_in=True
     movies = [
     "Sultan",
     "3 Idiots",
@@ -41,7 +49,9 @@ def start(req:Request):
            movie_list.append(response.json())
     return templates.TemplateResponse("main_page.html", {
         "request": req,
-        "movie": movie_list
+        "movie": movie_list,
+        "logged_in":logged_in,
+        "username":username,
     })
 
 @app.get("/search")
@@ -85,14 +95,13 @@ def login_info(req:Request,email : str = Form(...),password : str = Form(...)):
                                                   "error1":"email doesn't exist"})
      else:
           if password==user.password:
-               return {"got in"}
+               req.session["user_id"]=user.id
+               req.session["username"]=user.username
+               return RedirectResponse(url="http://127.0.0.1:8000/",status_code=303)
           else:
                return templates.TemplateResponse("login.html",
                                                  {"request":req,
                                                   "error":"wrong password"})
-     
-     return RedirectResponse(url="http://127.0.0.1:8000/",status_code=303)
-
 @app.get("/signup")
 def signup(req:Request):
      return templates.TemplateResponse(name="signup.html",request=req)

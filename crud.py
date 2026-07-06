@@ -7,3 +7,4 @@ def create(db:Session,model,data):
     db.refresh(obj)
     return obj
 
+
