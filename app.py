@@ -118,7 +118,15 @@ def signup_info(req:Request,
 
 @app.get("/profile")
 def profile(req:Request):
-     return templates.TemplateResponse(name="profile.html",request=req,)
+     user_id=req.session.get("user_id")
+     username=req.session.get("username")
+     return templates.TemplateResponse("profile.html",
+                                       {"request":req,
+                                        "username":username})
+@app.get("/logout")
+def logout(req:Request):
+     req.session.clear()
+     return RedirectResponse(url="/",status_code=303)
 
 if __name__=="__main__":
      uvicorn.run("app:app",host="127.0.0.1",port=8000,reload=True)
