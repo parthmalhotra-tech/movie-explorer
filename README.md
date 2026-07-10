@@ -37,7 +37,6 @@ movie-explorer/
 │── static/
 │── templates/
 │── app.py
-│── auth.py
 │── crud.py
 │── database.py
 │── models.py
