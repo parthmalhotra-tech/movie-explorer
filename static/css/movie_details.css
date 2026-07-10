@@ -55,6 +55,16 @@
   transition: transform var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast), color var(--transition-fast);
   white-space: nowrap;
 }
+.btn--primary {
+  background: var(--gradient-primary);
+  color: #fff;
+  box-shadow: 0 6px 20px rgba(229, 9, 20, 0.35);
+}
+
+.btn--primary:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 28px rgba(229, 9, 20, 0.5);
+}
 .logo{
   border: 1.5px solid transparent;
 
@@ -222,4 +232,7 @@ a{
 .overview{
   margin-top: 200px;
   align-self: baseline;
+}
+.watchlist{
+  margin-top: 40px;
 }

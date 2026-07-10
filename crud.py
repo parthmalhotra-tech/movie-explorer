@@ -6,5 +6,3 @@ def create(db:Session,model,data):
     db.commit()
     db.refresh(obj)
     return obj
-
-
