@@ -68,7 +68,6 @@ http://127.0.0.1:8000
 - Movie Watchlist
 - Favorites
 - Search Filters
-- Deployment on Render
 
 ## Author
 

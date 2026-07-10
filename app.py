@@ -127,6 +127,28 @@ def profile(req:Request):
 def logout(req:Request):
      req.session.clear()
      return RedirectResponse(url="/",status_code=303)
+@app.post("/movie/{movie_id}")
+def add_watchlist(req:Request,movie_id:str):
+    user_id=req.session.get("user_id")
+    username=req.session.get("username")
+    if user_id is None:
+         return RedirectResponse(url="/login",status_code=303)
+    movie_id.capitalize()
+    url = f"https://www.omdbapi.com/?apikey=904d2141&t={movie_id}"
+    response = requests.get(url)
+    movie = response.json()
+    data={"user_id":user_id,"imdb_id":movie["imdbID"],"title":movie["Title"],"poster":movie["Poster"]}
+    create(db,Watchlist,data)
+    return RedirectResponse(url="/",status_code=303)
+
+@app.get("/watchlist")
+def watchlist(req:Request):
+     user_id=req.session.get("user_id")
+     if user_id is None:
+          return {"please login first"}
+     else:
+          db.query(Watchlist).filter(User.user_id==user_id).first()                 
+          return templates.TemplateResponse("watchlist.html",{"request":req,})
 
 if __name__=="__main__":
      uvicorn.run("app:app",host="127.0.0.1",port=8000,reload=True)
