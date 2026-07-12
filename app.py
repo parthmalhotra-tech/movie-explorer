@@ -147,7 +147,7 @@ def watchlist(req:Request):
      if user_id is None:
           return {"please login first"}
      else:
-          db.query(Watchlist).filter(User.user_id==user_id).first()                 
+          movie=db.query(Watchlist).filter(Watchlist.user_id==user_id).first()                 
           return templates.TemplateResponse("watchlist.html",{"request":req,})
 
 if __name__=="__main__":
