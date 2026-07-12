@@ -147,8 +147,9 @@ def watchlist(req:Request):
      if user_id is None:
           return {"please login first"}
      else:
-          movie=db.query(Watchlist).filter(Watchlist.user_id==user_id).first()                 
-          return templates.TemplateResponse("watchlist.html",{"request":req,})
+          movie=db.query(Watchlist).filter(Watchlist.user_id==user_id).all()
+                 
+          return templates.TemplateResponse("watchlist.html",{"request":req,"movie":movie})
 
 if __name__=="__main__":
      uvicorn.run("app:app",host="127.0.0.1",port=8000,reload=True)

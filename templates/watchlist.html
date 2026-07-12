@@ -6,17 +6,47 @@
   <title>Movie Explorer </title>
   <link rel="stylesheet" href="/static/css/main_page.css" />
 </head>
-<body>
+<body >
   <header class="navbar">
     <div class="navbar__inner">
-      <a href="#" class="logo">
+      <a href="/" class="logo">
         <span class="logo__icon">🎬</span>
         <span class="logo__text">Movie<span class="logo__accent">Explorer</span></span>
       </a>
 
       <nav class="nav-links" aria-label="Primary navigation">
-        <a href="#" class="nav-links__item is-active">Home</a>
+        <a href="/" class="nav-links__item is-active">Home</a>
         <a href="#trending" class="nav-links__item">Movies</a>
         <a href="/watchlist" class="nav-links__item">Watchlist</a>
-        <a href="#footer" class="nav-links__item">About</a>
+        <a href="/" class="nav-links__item">About</a>
+    
       </nav>
+      </div>
+      </header>
+<div class="hero">
+     <div class="hero__overlay"></div>
+
+      <div class="hero__content">
+        <h1 class="hero__title" style="margin: 0; padding: 0;">see what your bucket have</h1>
+        
+      </div>
+</div>
+      <section class="movie_poster_details" id="trending">
+    {%for movie in movie%}
+    <article class="movie-card" >
+
+    <div  class="movie-card__poster">
+        <img src="{{ movie.poster }}" alt="{{ movie.title }}">
+    </div>
+
+    <a href="/movie/{{ movie.title }}">
+        <div class="movie-card__info">
+            <h3 class="movie-card__title">{{ movie.title }}</h3>
+           
+        </div>
+    </a>
+    </article>
+
+{%endfor%}
+</section>
+</body>
