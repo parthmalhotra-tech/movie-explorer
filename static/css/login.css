@@ -251,7 +251,7 @@ a{
 .wrong_password{
   color: crimson;
 }
-@media (max-width: 480px) {
+@media (max-width: 768px) {
   .logo__text {
     font-size: 1.1rem;
   }
