@@ -271,4 +271,7 @@ a{
     display: flex;
     flex-direction: column;
   }
+  .movie_details_text{
+    position: relative;
+  }
 }
