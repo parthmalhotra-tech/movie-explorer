@@ -47,6 +47,9 @@
 .logo:hover{
   border:1.5px solid white
 }
+.ul{
+  list-style: none;
+}
 
 body {
   background-color: var(--bg-primary);

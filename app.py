@@ -121,10 +121,12 @@ def profile(req:Request):
      user_id=req.session.get("user_id")
      username=req.session.get("username")
      user=db.query(User).filter(User.id==user_id).first()
+     movie=db.query(Watchlist).filter(Watchlist.user_id==user_id).all()
      return templates.TemplateResponse("profile.html",
                                        {"request":req,
                                         "username":username,
-                                        "user":user})
+                                        "user":user,
+                                        "movie":movie})
 @app.get("/logout")
 def logout(req:Request):
      req.session.clear()

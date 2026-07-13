@@ -24,7 +24,13 @@
   </section>
   <section class="profile_details">
     <p>Email : {{user.email}}</p>
-    <p>Favorites:</p>
+    <p>Favorites :{%for movie in movie%}
+     {{movie.title}} 
+     {%if not loop.last%}
+     ,
+     {%endif%}
+    {%endfor%}
+  </p>
     
   </section>
   <section class="edit_logout">
