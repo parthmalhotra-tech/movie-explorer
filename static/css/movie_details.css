@@ -237,6 +237,18 @@ a{
   margin-top: 40px;
 }
 @media (max-width: 768px) {
+   .nav-links {
+    display: none; /* Collapsed for simplicity — no JS menu toggle in this build */
+  }
+
+  .navbar__inner {
+    justify-content: space-between;
+  }
+
+  .hero {
+    padding: 100px 20px 60px;
+    min-height: auto;
+  }
   .logo__text {
     font-size: 1.1rem;
   }
@@ -255,6 +267,6 @@ a{
   }
   .movie_details{
     width:90%;
-    
+
   }
 }
