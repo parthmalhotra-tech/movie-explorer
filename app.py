@@ -114,6 +114,9 @@ def signup_info(req:Request,
      
      signup_details={"username":username,"email":email,"password":password}
      create(db,User,signup_details)
+     user=db.query(User).filter(User.email== email).first()
+     req.session["user_id"]=user.id
+     req.session["username"]=user.username
      return RedirectResponse(url="/",status_code=303)
 
 @app.get("/profile")
