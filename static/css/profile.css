@@ -173,3 +173,29 @@ a {
   display: flex;
   
 }
+@media (max-width: 480px) {
+  .logo__text {
+    font-size: 1.1rem;
+  }
+
+  .hero__title {
+    font-size: 2.2rem;
+  }
+
+  .hero__subtitle {
+    font-size: 0.95rem;
+  }
+
+  .movie-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+
+  .movie-card__info {
+    padding: 12px;
+  }
+
+  .category-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

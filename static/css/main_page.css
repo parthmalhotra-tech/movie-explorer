@@ -575,11 +575,7 @@ a {
   font-size: 0.85rem;
 }
 
-/* =========================================================
-   11. RESPONSIVE BREAKPOINTS
-   ========================================================= */
 
-/* Tablet */
 @media (max-width: 1024px) {
   .movie-grid {
     grid-template-columns: repeat(3, 1fr);
@@ -604,7 +600,6 @@ a {
   }
 }
 
-/* Small tablet / large phone */
 @media (max-width: 768px) {
   .nav-links {
     display: none; /* Collapsed for simplicity — no JS menu toggle in this build */
@@ -654,7 +649,7 @@ a {
   }
 }
 
-/* Mobile */
+
 @media (max-width: 480px) {
   .logo__text {
     font-size: 1.1rem;
