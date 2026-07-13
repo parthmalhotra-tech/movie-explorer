@@ -261,11 +261,12 @@ a{
     font-size: 0.95rem;
   }
 
-  .movie_poster{
+  .movie_poster {
     width:250px;
     max-width: 80%;
   }
   .movie_details{
+    position: static;
     width:90%;
     display: flex;
     flex-direction: column;
