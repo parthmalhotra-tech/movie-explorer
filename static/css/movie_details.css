@@ -272,5 +272,6 @@ a{
   }
   .movie_details_text{
     position: static;
+    margin-top: 100px;
   }
 }
