@@ -120,9 +120,11 @@ def signup_info(req:Request,
 def profile(req:Request):
      user_id=req.session.get("user_id")
      username=req.session.get("username")
+     user=db.query(User).filter(User.id==user_id).first()
      return templates.TemplateResponse("profile.html",
                                        {"request":req,
-                                        "username":username})
+                                        "username":username,
+                                        "user":user})
 @app.get("/logout")
 def logout(req:Request):
      req.session.clear()
@@ -145,7 +147,7 @@ def add_watchlist(req:Request,movie_id:str):
 def watchlist(req:Request):
      user_id=req.session.get("user_id")
      if user_id is None:
-          return {"please login first"}
+          return RedirectResponse(url="/login",status_code=303)
      else:
           movie=db.query(Watchlist).filter(Watchlist.user_id==user_id).all()
                  
