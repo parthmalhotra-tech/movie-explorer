@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Movie Explorer </title>
-  <link rel="stylesheet" href="/static/css/main_page.css" />
+  <link rel="stylesheet" href="/static/css/watchlist.css" />
 </head>
 <body >
   <header class="navbar">
@@ -24,13 +24,12 @@
       </div>
       </header>
 <div class="hero">
-     <div class="hero__overlay"></div>
 
       <div class="hero__content">
-        <h1 class="hero__title" style="margin: 0; padding: 0;">see what your bucket have</h1>
+        <h1 class="hero__title" >See what your bucket have</h1>
         
       </div>
-</div>
+
       <section class="movie_poster_details" id="trending">
     {%for movie in movie%}
     <article class="movie-card" >
@@ -48,5 +47,6 @@
     </article>
 
 {%endfor%}
+</div>
 </section>
 </body>
