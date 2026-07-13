@@ -262,16 +262,15 @@ a{
   }
 
   .movie_poster {
-    width:250px;
-    max-width: 80%;
+    width:80%;
+    max-width: 300px;
   }
   .movie_details{
-    position: static;
     width:90%;
     display: flex;
     flex-direction: column;
   }
   .movie_details_text{
-    position: relative;
+    position: static;
   }
 }
